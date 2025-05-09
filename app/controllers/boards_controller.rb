@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
 
   def create
     the_board = Board.new
-    the_board.name = params.fetch("query_name")
+    the_board.name = params.fetch("name")
 
     if the_board.valid?
       the_board.save
@@ -28,6 +28,7 @@ class BoardsController < ApplicationController
       redirect_to("/boards", { :alert => the_board.errors.full_messages.to_sentence })
     end
   end
+
 
   def update
     the_id = params.fetch("path_id")
